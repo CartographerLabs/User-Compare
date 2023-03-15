@@ -1,3 +1,4 @@
+import pycountry
 from PIL import Image
 from fuzzywuzzy import fuzz
 from pixelmatch.contrib.PIL import pixelmatch
@@ -237,7 +238,21 @@ class user():
         return percentage
 
     def _compare_location(self, other_location):
-        for location in self.location:
+
+        # Fuzzy search refuses to interpret UK and United Kingdom
+        if self.location == "UK":
+            self_location = "United Kingdom"
+        else:
+            self_location = self.location
+
+        self_location = pycountry.countries.search_fuzzy(self_location)
+
+        if other_location == "UK":
+            other_location = "United Kingdom"
+
+        other_location = pycountry.countries.search_fuzzy(other_location)
+
+        for location in self_location:
             if location in other_location:
                 return 100
 
