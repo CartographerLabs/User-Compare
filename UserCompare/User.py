@@ -124,6 +124,12 @@ class user():
         img_a = Image.open(self.profile_picture_dst)
         img_b = Image.open(other_picture)
 
+
+        if img_a.size > img_b.size:
+            img_a = img_a.resize(img_b.size)
+        elif img_b.size > img_a.size:
+            img_b = img_b.resize(img_a.size)
+
         # Creating a new image with the same size as the two images
         img_diff = Image.new("RGBA", img_a.size)
 
