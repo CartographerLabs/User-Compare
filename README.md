@@ -18,7 +18,7 @@ pip install git+https://github.com/user1342/User-Compare.git
 ```
 ## Usage Example
 
-'''
+```python
 from datetime import datetime
 import pycountry
 from UserCompare.User import user
@@ -27,7 +27,7 @@ my_user = user("john",None,"I am John ",["hello world"], pycountry.countries.sea
 other_user = user("john",None,"I am Jsohn ",["hello world"],  pycountry.countries.search_fuzzy("UK"), datetime(2022, 9, 20),["www.jamesstevenson.me"],["jdames","Jdack","dd"],["Jdoe"],"ActualJD")
 
 print(my_user.is_same(other_user))
-'''
+```
 
 # 🙏 Contributions
 PocketSmali is both extendable and modular. To add handlers for other SMALI instructions, create a Python file in the ```opcode_handlers``` subfolder. Inside of this file, create a method that handles a specific instruction type - this method should take the parameters ```(opcode, operands, runtime_env, emulator)```. Then add to the ```dict_of_opcode_handlers``` dictionary in the Emulator class with the key being the name of the instruction and the value being a reference to your created method for handling it.
